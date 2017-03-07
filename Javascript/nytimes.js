@@ -1,20 +1,21 @@
  
-//submit button 
-$("#submit").on("click", function() {
 
+$("form").on("submit", function(event) {
+    event.preventDefault();
+var query = "?q=xyz";
 var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-url += '?' + $.param({
-  'api-key': "0d14ee7038734317adf5eff9f4be4afa"
-});
+url += '?api-key=d7aef318229e4ddc919f69bbd300166e';
+    url += "&q=" + query;
+
+console.log(url);
+
 $.ajax({
   url: url,
   method: 'GET',
-}).done(function(response) {
- 
- var results = response.docs;
+}).done(function(result) {
+  console.log(result);
+}).fail(function(err) {
+  throw err;
+});
 
- $("#topArticles").prepend(results.snippet)
-
-
-})
-};
+});
