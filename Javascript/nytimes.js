@@ -10,8 +10,10 @@ $.ajax({
   url: url,
   method: 'GET',
 }).done(function(response) {
-  console.log(response);
-  	console.log(response.docs.snippet)
+ 
+ var results = response.docs;
+
+ $("#topArticles").prepend(results.snippet)
 
 
 })
